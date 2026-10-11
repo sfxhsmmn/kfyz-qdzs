@@ -1,0 +1,153 @@
+/* 全局重置 */
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "Microsoft Yahei", sans-serif;
+}
+body{
+    background-color: #FFF6F9;
+    padding:20px;
+}
+/* 登录页面样式 */
+.login-body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg,#FFE6F2,#E6F7FF);
+}
+.login-card{
+    background:#fff;
+    width:400px;
+    padding:35px;
+    border-radius: 24px; /*大圆角，卡通感*/
+    box-shadow: 0 8px 20px #ffc8dd;
+}
+.login-card h2{
+    text-align:center;
+    color:#ff7aaa;
+    margin-bottom:30px;
+}
+.input-box{
+    margin-bottom:20px;
+}
+.input-box label{
+    display:block;
+    margin-bottom:8px;
+    color:#555;
+    font-weight:bold;
+}
+.input-box input{
+    width:100%;
+    padding:12px 16px;
+    border:2px solid #ffd6e8;
+    border-radius:14px;
+    font-size:16px;
+    outline:none;
+}
+#loginBtn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:14px;
+    background-color:#ff85a2;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.2s;
+}
+#loginBtn:hover{
+    background:#ff6b8b;
+    transform: scale(1.02);
+}
+#tip{
+    text-align:center;
+    margin-top:16px;
+}
+
+/* 主页容器 */
+.container{
+    max-width:900px;
+    margin:0 auto;
+}
+.card{
+    background:#ffffff;
+    border-radius:22px;
+    padding:24px;
+    margin-bottom:24px;
+    box-shadow: 0 6px 16px #e9d8fd;
+}
+.card h2{
+    color:#7b61ff;
+    margin-bottom:16px;
+}
+.intro-card p{
+    font-size:17px;
+    line-height:1.7;
+    color:#444;
+}
+
+/* 轮播图样式 */
+.slider{
+    width:100%;
+    overflow:hidden;
+    border-radius:18px;
+}
+.slide-list{
+    display:flex;
+    transition: all 0.5s ease;
+}
+.slide-list img{
+    width:100%;
+    flex-shrink:0;
+}
+.dot-group{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:12px;
+}
+.dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:#ddd;
+}
+.dot.active{
+    background:#7b61ff;
+}
+
+/* 留言板 */
+.msg-input-area{
+    display:flex;
+    gap:10px;
+    margin-bottom:16px;
+}
+#msgInput{
+    flex:1;
+    padding:12px;
+    border:2px solid #dcd3ff;
+    border-radius:14px;
+    min-height:80px;
+    outline:none;
+}
+#submitBtn{
+    padding:12px 20px;
+    border:none;
+    border-radius:14px;
+    background:#7b61ff;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+.msg-item{
+    background:#f7f2ff;
+    padding:14px;
+    border-radius:14px;
+    margin-bottom:10px;
+}
+.msg-item p{
+    margin:6px 0;
+}

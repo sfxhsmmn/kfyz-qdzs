@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人主页</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 自我介绍区域 -->
+        <section class="card intro-card">
+            <h2>👋 关于我</h2>
+            <p>我是zkd，一名大二的软件工程学生</p>
+            <p>喜欢追剧、科幻和悬疑小说以及旅游</p>
+        </section>
+
+        <!-- 轮播图区域 -->
+        <section class="card slide-card">
+            <h2>🖼️ 我的相册</h2>
+            <div class="slider">
+                <div class="slide-list">
+                    <img src="./images/p1.jpg" alt="图1">
+                    <img src="./images/p2.jpg" alt="图2">
+                    <img src="./images/p3.jpg" alt="图3">
+                </div>
+                <div class="dot-group">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 留言板区域 -->
+        <section class="card msg-card">
+            <h2>💬 留言板（AI自动回复）</h2>
+            <div class="msg-input-area">
+                <textarea id="msgInput" placeholder="写下你的留言..."></textarea>
+                <button id="submitBtn">提交留言✨</button>
+            </div>
+            <div id="msgList" class="msg-list"></div>
+        </section>
+    </div>
+
+<script>
+// ========== 轮播图代码（自动播放）==========
+const slideList = document.querySelector('.slide-list');
+const dots = document.querySelectorAll('.dot');
+let index = 0;
+const total = 3;
+function changeSlide(){
+    index++;
+    if(index >= total) index = 0;
+    slideList.style.transform = `translateX(-${index*100}%)`;
+    // 更新小圆点
+    dots.forEach((dot,i)=>{
+        dot.classList.toggle('active', i===index);
+    })
+}
+// 自动轮播，3秒切换一次
+let timer = setInterval(changeSlide,3000);
+
+// ========== 留言板 localStorage 持久化 ==========
+const msgInput = document.getElementById('msgInput');
+const submitBtn = document.getElementById('submitBtn');
+const msgList = document.getElementById('msgList');
+// 读取本地存储留言
+let msgArr = JSON.parse(localStorage.getItem('msgData')) || [];
+
+// 渲染留言
+function renderMsg(){
+    msgList.innerHTML = '';
+    msgArr.forEach(item=>{
+        const div = document.createElement('div');
+        div.className = "msg-item";
+        div.innerHTML = `
+            <p>📝用户留言：${item.content}</p>
+            <p>🤖AI回复：${item.aiReply}</p>
+        `
+        msgList.appendChild(div);
+    })
+}
+renderMsg();
+
+// 提交留言
+submitBtn.onclick = async function(){
+    const content = msgInput.value.trim();
+    if(!content) return alert("留言不能为空哦🥺");
+    // ======================
+    // 【这里预留大模型API接口位置】
+    // 你后续接入豆包/DeepSeek API就在这里写fetch请求
+    // 现在先用模拟AI回复，方便你先跑通页面
+    // ======================
+    const aiReply = `收到你的留言「${content}」！很高兴看到你的消息~`;
+    msgArr.push({
+        content,
+        aiReply
+    })
+    localStorage.setItem('msgData', JSON.stringify(msgArr));
+    renderMsg();
+    msgInput.value = '';
+}
+</script>
+</body>
+</html>
