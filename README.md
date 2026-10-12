@@ -54,6 +54,7 @@ npm run build
 
 # 预览打包后的静态页面
 npm run preview
+```
 
 ## 🌐 线上访问地址
 https://sfxhsmmn.github.io/kfyz-qdzs/
