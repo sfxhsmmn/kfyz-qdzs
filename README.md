@@ -61,6 +61,8 @@ https://sfxhsmmn.github.io/kfyz-qdzs/
 每次向 main 分支执行 git push 提交代码，会自动触发 Actions 构建部署，等待 1~3 分钟即可更新线上网页。
 
 ## 📁 项目目录
+```plaintext
+kfyz-qdzs/
 ├── .github/workflows/
 │   └── deploy.yml        # GitHub Actions自动部署配置，推送代码自动打包发布
 ├── second/               # Vue项目根目录
@@ -75,8 +77,10 @@ https://sfxhsmmn.github.io/kfyz-qdzs/
 │   └── package.json      # 项目依赖管理
 ├── 第一周/               # 第一周原生网页代码
 └── README.md             # 项目说明文档
+```
 
 ## 🔐 登录信息
 账号：zkd
 密码：88888888
+
 
