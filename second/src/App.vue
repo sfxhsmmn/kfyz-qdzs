@@ -14,7 +14,7 @@
 
 <script setup>
 import { ref } from 'vue'
-// 引入你components文件夹里的4个组件
+// 引入components文件夹里的4个组件
 import Login from './components/Login.vue'
 import IntroCard from './components/IntroCard.vue'
 import Slider from './components/Slider.vue'
