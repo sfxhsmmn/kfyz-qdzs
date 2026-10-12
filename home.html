@@ -11,7 +11,7 @@
         <!-- 自我介绍区域 -->
         <section class="card intro-card">
             <h2>👋 关于我</h2>
-            <p>我是zkd，一名大二的软件工程学生</p>
+            <p>我是zkd,一名大二的软件工程学生</p>
             <p>喜欢追剧、科幻和悬疑小说以及旅游</p>
         </section>
 
@@ -34,7 +34,7 @@
 
         <!-- 留言板区域 -->
         <section class="card msg-card">
-            <h2>💬 留言板（AI自动回复）</h2>
+            <h2>💬 留言板(AI自动回复)</h2>
             <div class="msg-input-area">
                 <textarea id="msgInput" placeholder="写下你的留言..."></textarea>
                 <button id="submitBtn">提交留言✨</button>
@@ -76,7 +76,7 @@ function renderMsg(){
         div.className = "msg-item";
         div.innerHTML = `
             <p>📝用户留言：${item.content}</p>
-            <p>🤖AI回复：${item.aiReply}</p>
+            <p>🤖AI回复:${item.aiReply}</p>
         `
         msgList.appendChild(div);
     })
@@ -89,8 +89,8 @@ submitBtn.onclick = async function(){
     if(!content) return alert("留言不能为空哦🥺");
     // ======================
     // 【这里预留大模型API接口位置】
-    // 你后续接入豆包/DeepSeek API就在这里写fetch请求
-    // 现在先用模拟AI回复，方便你先跑通页面
+    // 后续接入API就在这里写fetch请求
+    // 先用模拟AI回复，方便跑通页面
     // ======================
     const aiReply = `收到你的留言「${content}」！很高兴看到你的消息~`;
     msgArr.push({
