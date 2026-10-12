@@ -3,20 +3,34 @@ name: Deploy Vite Vue site
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
+
+# 官方 Pages 部署需要的权限（用 OIDC，不需要仓库写权限）
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同时只允许一个部署任务
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # Vite 8 / @vitejs/plugin-vue 6 要求 Node ^20.19.0 || >=22.12.0
+          node-version: 22
           cache: 'npm'
           cache-dependency-path: second/package-lock.json
 
@@ -28,8 +42,14 @@ jobs:
         working-directory: ./second
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./second/dist
+          path: ./second/dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

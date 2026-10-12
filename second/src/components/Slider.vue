@@ -16,10 +16,12 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 
+// 用 BASE_URL 拼接，保证部署到 GitHub Pages 子路径（/kfyz-qdzs/）时图片也能访问
+const base = import.meta.env.BASE_URL
 const imgList = ref<string[]>([
-  '/images/p1.jpg',
-  '/images/p2.jpg',
-  '/images/p3.jpg'
+  `${base}images/p1.jpg`,
+  `${base}images/p2.jpg`,
+  `${base}images/p3.jpg`
 ])
 const currentIndex = ref(0)
 let timer: number | null = null
